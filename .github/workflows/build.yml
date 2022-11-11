@@ -1,0 +1,29 @@
+name: Build
+on: [push]
+jobs:
+  Build-Release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v2
+      - name: Check Go version
+        run: go version
+      - name: Build
+        run: make
+#      - name: Pack release
+#        run: tar cfvz itachi_darwin_amd64.tgz itachi #LICENSE README.md cia_example.yaml filter_example.yaml
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files:
+          - itachi_darwin_amd64
+          - itachi_darwin_arm64
+          - itachi_linux_amd64
+          - itachi_windows_amd64.exe
+
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
