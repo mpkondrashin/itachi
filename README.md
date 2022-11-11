@@ -26,7 +26,7 @@ This sample downloads [eicar.com](https://www.eicar.com/download-anti-malware-te
 
 Harmless file that should not be detected by any securiyt solution.
 
-**Note:** If it is detected, it is 100% False Positive
+**Note:** If it is detected, it is False Positive
 
 ## Installation
 Not required. Just download Itachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases) 
