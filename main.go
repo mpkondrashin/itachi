@@ -21,17 +21,17 @@ func extractAll() {
 	if err != nil {
 		panic(err)
 	}
-	for _, each := range dir {
+	for i, each := range dir {
 		if !each.Type().IsRegular() {
 			continue
 		}
-		fmt.Println(each.Name())
 		f, err := malware.Open("malware/" + each.Name())
 		if err != nil {
 			panic(err)
 		}
 		stamp := time.Now().Format("20060102150405")
 		targetFileName := stamp + "_" + each.Name()
+		fmt.Printf("%d: %s\n", i+1, targetFileName)
 		extract(f, targetFileName)
 	}
 }
@@ -46,8 +46,11 @@ func extract(source io.Reader, targetFileName string) {
 	if err := os.WriteFile(targetFileName, []byte(uniqueData), 0755); err != nil {
 		panic(err)
 	}
+	//fmt.Printf("Sample: %s\n", targetFileName)
 }
 
 func main() {
+	fmt.Println("Itachi Samples Generator")
 	extractAll()
+	fmt.Println("Done")
 }
