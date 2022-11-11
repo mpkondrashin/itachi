@@ -26,4 +26,5 @@ gmw/novirus.exe: gmw/novirus/main.go
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/novirus.exe ./gmw/novirus/*.go
 
 gmw/antiav.exe: gmw/antiav/main.go
+    curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/antiav.exe ./gmw/antiav/*.go
