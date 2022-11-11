@@ -4,7 +4,7 @@
 # Makefile
 #
 
-itachi_linux_amd64: main.go gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/novirus.exe
+itachi_linux_amd64: main.go gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/novirus.exe  gmw/antiav.exe
 	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
 	GOOS=darwin GOARCH=amd64 go build -o itachi_darwin_amd64
 	GOOS=darwin GOARCH=arm64 go build -o itachi_darwin_arm64
@@ -24,3 +24,6 @@ gmw/downloader.exe: gmw/downloader/main.go
 
 gmw/novirus.exe: gmw/novirus/main.go
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/novirus.exe ./gmw/novirus/*.go
+
+gmw/antiav.exe: gmw/antiav/main.go
+	GOOS=windows GOARCH=amd64 go build -o ./gmw/antiav.exe ./gmw/antiav/*.go

@@ -22,6 +22,10 @@ Upon execution this sample attempt to connect to wrs21.winshipway.com web site t
 
 This sample downloads [eicar.com](https://www.eicar.com/download-anti-malware-testfile/) from web site and saves to currecnt directory
 
+### &#x261E; AntiAV
+
+This sample kill all antimalware related processes
+
  ### &#x261E; NoVirus
 
 Harmless file that should not be detected by any securiyt solution.
