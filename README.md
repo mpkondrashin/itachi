@@ -16,7 +16,7 @@ ransomware file that "encrypts" all MS Office files in C:\ directory.
 
 ### &#x261E; Spyware
 
-Upon execution this sample attempt to connect to wrs21.winshipway.com web site that is assumed to be spyware-related
+Upon execution this sample attempt to connect to wrs21.winshipway.com web site that is harmlessm but assumed by sandbox to be spyware-related
 
 ## Installation
 Not required. Just download Itachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases) 
