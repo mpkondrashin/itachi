@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup GCC
-        run: apt-get -y install mingw-w64
+        run: sudo apt-get -y install mingw-w64
       - name: Make Samples
         run: cd malware; make CC=x86_64-w64-mingw32-gcc
       - name: Setup Go
