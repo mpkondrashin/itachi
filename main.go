@@ -11,13 +11,15 @@ import (
 	"github.com/google/uuid"
 )
 
+// go : embed malware/*.exe
+
 const unique = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 
-//go:embed malware/*.exe
+//go:embed gmw/*.exe
 var malware embed.FS
 
 func extractAll() {
-	dir, err := malware.ReadDir("malware")
+	dir, err := malware.ReadDir("gmw")
 	if err != nil {
 		panic(err)
 	}
@@ -25,7 +27,7 @@ func extractAll() {
 		if !each.Type().IsRegular() {
 			continue
 		}
-		f, err := malware.Open("malware/" + each.Name())
+		f, err := malware.Open("gmw/" + each.Name())
 		if err != nil {
 			panic(err)
 		}

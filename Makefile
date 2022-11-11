@@ -1,0 +1,20 @@
+#
+# Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+#
+# Makefile
+#
+
+itachi_linux_amd64: main.go gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe
+	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
+	GOOS=darwin GOARCH=amd64 go build -o itachi_darwin_amd64
+	GOOS=darwin GOARCH=arm64 go build -o itachi_darwin_arm64
+	GOOS=windows GOARCH=amd64 go build -o itachi_windows_amd64.exe
+
+gmw/dropper.exe: gmw/dropper/main.go
+	GOOS=windows GOARCH=amd64 go build  -o ./gmw/dropper.exe ./gmw/dropper/*.go
+
+gmw/encryptor.exe: gmw/encryptor/main.go
+	GOOS=windows GOARCH=amd64 go build -o ./gmw/encryptor.exe  ./gmw/encryptor/*.go
+
+gmw/spyware.exe: gmw/spyware/main.go
+	GOOS=windows GOARCH=amd64 go build -o ./gmw/spyware.exe ./gmw/spyware/*.go
