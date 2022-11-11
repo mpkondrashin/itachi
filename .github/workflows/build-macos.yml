@@ -4,7 +4,7 @@ jobs:
   Build-Release:
     runs-on: ubuntu-latest
     steps:
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: Setup GCC
         run: apt-get -y install mingw-w64
       - name: Make Samples
