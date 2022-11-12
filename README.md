@@ -10,7 +10,7 @@ Upon execution it will write to current directory [eicar.com](https://www.eicar.
 
 ### &#x261E; Encryptor
 
-ransomware file that "encrypts" all MS Office files in C:\ directory.
+ransomware malware that "encrypts" all MS Office files in C:\ directory.
 
 **Note:** Second run will decrypt them back
 
