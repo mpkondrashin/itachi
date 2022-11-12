@@ -1,4 +1,4 @@
-# Itachi Generate Harmless Malware Samples
+# Itachi &mdash; Generate Harmless Malware Samples
 
 **At each run you will receive three samples that are detected by Sandbox, but not by static analysis**
 
