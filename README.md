@@ -8,7 +8,7 @@
 
 Upon execution it will write to current directory [eicar.com](https://www.eicar.com/download-anti-malware-testfile/) test malware file
 
-**Deep Discovery Aanlyzer Detection:** VAN_MALWARE.UMXX
+Deep Discovery Aanlyzer Detection: **VAN_MALWARE.UMXX**
 
 ### &#x261E; Encryptor
 
@@ -16,7 +16,7 @@ ransomware malware that "encrypts" all MS Office files in C:\ directory.
 
 **Note:** Second run will decrypt them back
 
-**Deep Discovery Aanlyzer Detection:** VAN_RANSOMWARE.UMXX
+Deep Discovery Aanlyzer Detection: **VAN_RANSOMWARE.UMXX**
 
 ### &#x261E; Spyware
 
@@ -28,13 +28,13 @@ Upon execution this sample attempt to connect to wrs21.winshipway.com web site t
 
 This sample downloads [eicar.com](https://www.eicar.com/download-anti-malware-testfile/) from web site and saves to currecnt directory
 
-**Deep Discovery Aanlyzer Detection:** Troj.Win32.TRX.XXPE50FFF062
+Deep Discovery Aanlyzer Detection: **Troj.Win32.TRX.XXPE50FFF062**
 
 ### &#x261E; AntiAV
 
 This sample kills all antimalware related processes
 
-**Deep Discovery Aanlyzer Detection:** VAN_MALWARE.UMXX
+Deep Discovery Aanlyzer Detection: **VAN_MALWARE.UMXX**
 
 ### &#x261E; NoVirus
 
@@ -42,7 +42,7 @@ Harmless file that should not be detected by any security solution.
 
 **Note:** If it is detected by some static analysis product, it is False Positive
 
-**Deep Discovery Aanlyzer Detection:** None
+Deep Discovery Aanlyzer Detection: None
 
 ## Installation
 Not required. Just download Itachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases) 
