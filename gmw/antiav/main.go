@@ -1,3 +1,11 @@
+/***************************************************************
+*
+* Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+*
+* main.go - antiav - kill all antimalware processes
+*
+***************************************************************/
+
 package main
 
 import (

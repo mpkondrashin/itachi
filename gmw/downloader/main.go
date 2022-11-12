@@ -1,3 +1,11 @@
+/***************************************************************
+*
+* Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+*
+* main.go - downloader - download and save eicar.com file
+*
+***************************************************************/
+
 package main
 
 import (

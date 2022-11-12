@@ -1,3 +1,9 @@
+#
+# Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+#
+# build.yml - github actions file to build release
+#
+
 name: Build
 on: [push]
 jobs:

@@ -1,3 +1,11 @@
+/***************************************************************
+*
+* Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+*
+* main.go - spyware - connect to spyware related web site
+*
+***************************************************************/
+
 package main
 
 import (

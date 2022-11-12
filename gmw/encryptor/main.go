@@ -1,3 +1,12 @@
+/***************************************************************
+*
+* Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+*
+* main.go - encryptor - encrypt all MS Office files in C:\Users
+* folder
+*
+***************************************************************/
+
 package main
 
 import (
