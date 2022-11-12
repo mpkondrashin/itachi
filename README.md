@@ -35,7 +35,7 @@ Harmless file that should not be detected by any security solution.
 ## Installation
 Not required. Just download Itachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases) 
 
-## Static analysys
+## Static Analysys for Samples
 
 Plese note that some of these file are deetected by some static analysis engines. Please refer to following table that shows results faithful for Nov 12 2022.
 
