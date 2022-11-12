@@ -12,7 +12,7 @@ Deep Discovery Analyzer Detection: **VAN_MALWARE.UMXX**
 
 ### &#x261E; Encryptor
 
-ransomware malware that "encrypts" all MS Office files in C:\ directory.
+Ransomware malware that "encrypts" all MS Office files in C:\Users directory.
 
 **Note:** Second run will decrypt them back
 
