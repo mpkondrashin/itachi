@@ -30,7 +30,7 @@ This sample kill all antimalware related processes
 
 Harmless file that should not be detected by any securiyt solution.
 
-**Note:** If it is detected, it is False Positive
+**Note:** If it is detected by some static analysis product, it is False Positive
 
 ## Installation
 Not required. Just download Itachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases) 
