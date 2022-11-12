@@ -18,7 +18,6 @@ var targets = []string{
 	".pptx",
 	".xls",
 	".xlsx",
-	".vbs",
 	".pst",
 }
 
