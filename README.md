@@ -1,4 +1,4 @@
-# Itachi &mdash; Generate Harmless Malware Samples
+# Itachi &mdash; Showcase Sandbox Technology
 
 **At each run you will receive five unique samples that are detected by Sandbox, but not by static analysis**
 
