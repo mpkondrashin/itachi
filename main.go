@@ -55,4 +55,15 @@ func main() {
 	fmt.Println("Itachi Samples Generator")
 	extractAll()
 	fmt.Println("Done")
+	fmt.Print(warning)
 }
+
+var warning = `
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                         !!
+!!  Do not run these executables locally!  !!
+!!                                         !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+`

