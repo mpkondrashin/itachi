@@ -6,7 +6,7 @@
 
 ### &#x261E; Dropper
 
-Upon execution dropper.exe is writing to current directory [eicar.com](https://www.eicar.com/download-anti-malware-testfile/) test malware file
+Upon execution it will write to current directory [eicar.com](https://www.eicar.com/download-anti-malware-testfile/) test malware file
 
 ### &#x261E; Encryptor
 
