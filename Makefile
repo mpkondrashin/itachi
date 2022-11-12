@@ -24,7 +24,10 @@ gmw/spyware.exe: gmw/spyware/main.go
 gmw/downloader.exe: gmw/downloader/main.go
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/downloader.exe ./gmw/downloader/*.go
 
-gmw/antiav.exe: gmw/antiav/main.go
+gmw/antiav/AvList.txt.gz: gmw/antiav/AvList.txt
+	gzip -c gmw/antiav/AvList.txt > gmw/antiav/AvList.txt.gz
+
+gmw/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
 	#curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/antiav.exe ./gmw/antiav/*.go
 

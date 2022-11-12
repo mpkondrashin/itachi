@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bytes"
+	"compress/gzip"
 	_ "embed"
 	"encoding/csv"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"os/exec"
@@ -11,8 +14,8 @@ import (
 	"strings"
 )
 
-//go:embed AvList.txt
-var avList string
+//go:embed AvList.txt.gz
+var avListGZ []byte
 
 var f *os.File
 
@@ -27,10 +30,11 @@ func main() {
 		panic(err)
 	}
 	defer f.Close()
+	avList := GetAVList()
 	tasks := TasksList()
 	list := IterateProcess(tasks)
 	for _, each := range list {
-		if isAv(each) {
+		if avList.isAV(each) {
 			TaskKill(each)
 		} else {
 			fmt.Fprintf(f, "Skip %s\n", each)
@@ -79,6 +83,7 @@ func IterateProcess(csvTaskList string) (result []string) {
 	return
 }
 
+/*
 func isAv(name string) bool {
 	name = strings.ToLower(name)
 	for _, each := range strings.Split(avList, "\n") {
@@ -89,4 +94,33 @@ func isAv(name string) bool {
 		}
 	}
 	return false
+}*/
+
+type AVList []string
+
+func (a AVList) isAV(name string) bool {
+	name = strings.ToLower(name)
+	for _, each := range a {
+		if name == each {
+			return true
+		}
+	}
+	return false
+}
+
+func GetAVList() (result AVList) {
+	gz, err := gzip.NewReader(bytes.NewReader(avListGZ))
+	if err != nil {
+		panic(err)
+	}
+	unpacked, err := io.ReadAll(gz)
+	if err != nil {
+		panic(err)
+	}
+	for _, each := range strings.Split(string(unpacked), "\n") {
+		each = strings.TrimSpace(each)
+		each = strings.ReplaceAll(each, " ", "")
+		result = append(result, each)
+	}
+	return
 }
