@@ -82,6 +82,8 @@ func IterateProcess(csvTaskList string) (result []string) {
 func isAv(name string) bool {
 	name = strings.ToLower(name)
 	for _, each := range strings.Split(avList, "\n") {
+		each = strings.TrimSpace(each)
+		each = strings.ReplaceAll(each, " ", "")
 		if name == strings.ToLower(each) {
 			return true
 		}
