@@ -1,6 +1,7 @@
 /***************************************************************
 *
-* Itachi (c) 2022 by Mikhail Kondrashin (mkondrashin@gmail.com)
+* Itachi (c) 2022 by Michael Kondrashin (mkondrashin@gmail.com)
+* Copyright under MIT Lincese. Please see LICENSE file for details
 *
 * main.go - dropper - write eicar.com to locally
 *
