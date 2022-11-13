@@ -26,6 +26,7 @@ jobs:
         with:
           files: |
             README.md
+            LICENSE
             itachi_darwin_amd64
             itachi_darwin_arm64
             itachi_linux_amd64
