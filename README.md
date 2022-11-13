@@ -53,7 +53,7 @@ Not required. Just download Itachi for your OS from [releases](https://github.co
 
 ## Static Analysys for Samples
 
-Plese note that some of these files are detected by some static analysis engines. Please refer to following table that shows results faithful for Nov 12 2022.
+Although these samples are designed to be detected only by dynamic analysis, some of these files are detected by some static analysis engines. Please refer to following table that shows results faithful for Nov 12 2022.
 
 |                   | spyware | encryptor | dropper | downloader | novirus | antiav |
 | ----------------- | ------- | --------- | ------- | ---------- | ------- | ------ |
