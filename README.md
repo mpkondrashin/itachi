@@ -2,6 +2,10 @@
 
 **At each run you will receive five unique samples that are detected by Sandbox, but not by static analysis**
 
+**DISCLAMER: Use these files at your own risk**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Samples
 
 ### &#x261E; Dropper
