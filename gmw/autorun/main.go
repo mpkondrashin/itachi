@@ -3,20 +3,24 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"golang.org/x/sys/windows/registry"
 )
 
 func main() {
-	k, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\Microsoft\Windows NT\CurrentVersion`, registry.QUERY_VALUE)
+	filePath, err := os.Executable()
+	if err != nil {
+		log.Fatal(err)
+	}
+	AutoRunPath := `SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
+	k, err := registry.OpenKey(registry.LOCAL_MACHINE, AutoRunPath, registry.WRITE)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer k.Close()
-
-	s, _, err := k.GetStringValue("SystemRoot")
-	if err != nil {
+	if err := k.SetStringValue("itachi", filePath); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Windows system root is %q\n", s)
+	fmt.Printf("Autorun added for %s\n", filePath)
 }
