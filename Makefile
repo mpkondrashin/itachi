@@ -6,7 +6,7 @@
 # Makefile
 #
 
-EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/novirus.exe 
+EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe 
 
 itachi_linux_amd64: main.go $(EXE)
 	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
@@ -25,6 +25,9 @@ gmw/spyware.exe: gmw/spyware/main.go
 
 gmw/downloader.exe: gmw/downloader/main.go
 	GOOS=windows GOARCH=amd64 go build -o ./gmw/downloader.exe ./gmw/downloader/*.go
+
+gmw/autorun.exe: gmw/autorun/main.go
+	GOOS=windows GOARCH=amd64 go build -o ./gmw/autorun.exe ./gmw/autorun/*.go
 
 gmw/antiav/AvList.txt.gz: gmw/antiav/AvList.txt
 	gzip -c gmw/antiav/AvList.txt > gmw/antiav/AvList.txt.gz
