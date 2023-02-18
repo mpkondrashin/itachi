@@ -6,7 +6,7 @@
 # Makefile
 #
 
-EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe 
+EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe gmw/antivm.exe 
 
 itachi_linux_amd64: main.go $(EXE)
 	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
@@ -15,29 +15,32 @@ itachi_linux_amd64: main.go $(EXE)
 	GOOS=windows GOARCH=amd64 go build -o itachi_windows_amd64.exe
 
 gmw/dropper.exe: gmw/dropper/main.go
-	GOOS=windows GOARCH=amd64 go build  -o ./gmw/dropper.exe ./gmw/dropper/*.go
+	GOOS=windows GOARCH=amd64 go build  -ldflags "-s -w" -o ./gmw/dropper.exe ./gmw/dropper/*.go
 
 gmw/encryptor.exe: gmw/encryptor/main.go
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/encryptor.exe  ./gmw/encryptor/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/encryptor.exe  ./gmw/encryptor/*.go
 
 gmw/spyware.exe: gmw/spyware/main.go
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/spyware.exe ./gmw/spyware/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/spyware.exe ./gmw/spyware/*.go
 
 gmw/downloader.exe: gmw/downloader/main.go
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/downloader.exe ./gmw/downloader/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/downloader.exe ./gmw/downloader/*.go
 
 gmw/autorun.exe: gmw/autorun/main.go
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/autorun.exe ./gmw/autorun/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/autorun.exe ./gmw/autorun/*.go
 
 gmw/antiav/AvList.txt.gz: gmw/antiav/AvList.txt
 	gzip -c gmw/antiav/AvList.txt > gmw/antiav/AvList.txt.gz
 
 gmw/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
 	#curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/antiav.exe ./gmw/antiav/*.go
+	GOOS=windows GOARCH=amd64 go build-ldflags "-s -w" -o ./gmw/antiav.exe ./gmw/antiav/*.go
+
+gmw/antivm.exe: gmw/antivm/main.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antivm.exe ./gmw/antivm/*.go
 
 gmw/novirus.exe: gmw/novirus/main.go
-	GOOS=windows GOARCH=amd64 go build -o ./gmw/novirus.exe ./gmw/novirus/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/novirus.exe ./gmw/novirus/*.go
 
 .PHONY: clean
 
