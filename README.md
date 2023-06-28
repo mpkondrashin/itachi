@@ -53,20 +53,24 @@ Not required. Just download Itachi for your OS from [releases](https://github.co
 
 ## Static Analysys for Samples
 
-Although these samples are designed to be detected only by dynamic analysis, some of these files are detected by some static analysis engines. Please refer to following table that shows results faithful for Nov 12 2022:
+Although these samples are designed to be detected only by dynamic analysis, some of these files are detected by some static analysis engines. Please refer to following table that shows results faithful for Jun 28 2023:
 
-|                   | spyware | encryptor | dropper | downloader | novirus | antiav |
-| ----------------- | ------- | --------- | ------- | ---------- | ------- | ------ |
-| Avast             |         |           | x       |            |         |        |
-| AVG               |         |           | x       |            |         |        |
-| Cybereason        |         |           |         |            | x       |        |
-| Cylance           |         | x         | x       |            | x       |        |
-| Cynet             | x       | x         | x       | x          | x       | x      |
-| Cyren             |         |           | x       |            |         |        |
-| Elastic           |         |           | x       | x          | x       |        |
-| Google            | x       |           | x       | x          |         |        |
-| Ikarus            | x       |           | x       | x          |         |        |
-| MaxSecure         | x       | x         |         | x          | x       |        |
-| Microsoft         |         | x         |         |            |         |        |
+|                   | spyware | encryptor | dropper | downloader | novirus | antiav | 
+| ----------------- | ------- | --------- | ------- | ---------- | ------- | ------ | 
+| Acronis(Static ML)|         |           | x       |            |         |        | 
+| Avast             |         |           | x       |            |         |        | 
+| AVG               |         |           | x       |            |         |        | 
+| Cybereason        |         |           |         |            | x       |        | 
+| Cylance           |         | x         |         |            |         |        | 
+| Cynet             | x       |           | x       | x          | x       | x      | 
+| Cyren             |         |           | x       |            |         |        | 
+| DeepInstinct      | x       |           | x       | x          | x       | x      | 
+| Elastic           |         |           | x       |            |         |        |
+| ESET-NOD32        |         |           |         | x          |         |        |
+| Google            | x       | x         | x       | x          |         |        | 
+| Ikarus            | x       | x         | x       | x          |         |        | 
+| MaxSecure         | x       |           |         | x          | x       | x      |
+| McAfee-GW-Edition |         | x         | x       |            |         | x      |
+| Microsoft         |         |           |         |            |         |        |        
 | SecureAge         | x       | x         | x       | x          | x       | x      |
 | Trellix (FireEye) |         |           |         |            | x       |        |
