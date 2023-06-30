@@ -34,7 +34,7 @@ gmw/antiav/AvList.txt.gz: gmw/antiav/AvList.txt
 
 gmw/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
 	#curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
-	GOOS=windows GOARCH=amd64 go build-ldflags "-s -w" -o ./gmw/antiav.exe ./gmw/antiav/*.go
+	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antiav.exe ./gmw/antiav/*.go
 
 gmw/antivm.exe: gmw/antivm/main.go
 	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antivm.exe ./gmw/antivm/*.go
