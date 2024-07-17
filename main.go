@@ -15,7 +15,6 @@ import (
 	"io"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/google/uuid"
 )
@@ -32,6 +31,7 @@ func extractAll() {
 	if err != nil {
 		panic(err)
 	}
+	uniqueStr := uuid.New().String()
 	for i, each := range dir {
 		if !each.Type().IsRegular() {
 			continue
@@ -40,20 +40,19 @@ func extractAll() {
 		if err != nil {
 			panic(err)
 		}
-		stamp := time.Now().Format("20060102150405")
-		targetFileName := stamp + "_" + each.Name()
+		//stamp := time.Now().Format("20060102150405")
+		targetFileName := uniqueStr + "_" + each.Name()
 		fmt.Printf("%d: %s\n", i+1, targetFileName)
-		extract(f, targetFileName)
+		extract(f, uniqueStr, targetFileName)
 	}
 }
 
-func extract(source io.Reader, targetFileName string) {
+func extract(source io.Reader, uniqueStr string, targetFileName string) {
 	data, err := io.ReadAll(source)
 	if err != nil {
 		panic(err)
 	}
-	u := uuid.New().String()
-	uniqueData := strings.Replace(string(data), unique, u, 1)
+	uniqueData := strings.Replace(string(data), unique, uniqueStr, 1)
 	if err := os.WriteFile(targetFileName, []byte(uniqueData), 0755); err != nil {
 		panic(err)
 	}
