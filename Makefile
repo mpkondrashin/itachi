@@ -6,7 +6,7 @@
 # Makefile
 #
 
-EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe gmw/antivm.exe 
+EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe #gmw/antivm.exe 
 
 itachi_linux_amd64: main.go $(EXE)
 	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
@@ -36,8 +36,8 @@ gmw/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
 	#curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
 	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antiav.exe ./gmw/antiav/*.go
 
-gmw/antivm.exe: gmw/antivm/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antivm.exe ./gmw/antivm/*.go
+#gmw/antivm.exe: gmw/antivm/main.go
+#	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antivm.exe ./gmw/antivm/*.go
 
 gmw/novirus.exe: gmw/novirus/main.go
 	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/novirus.exe ./gmw/novirus/*.go
