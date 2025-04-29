@@ -1,6 +1,6 @@
 module github.com/mpkondrashin/itachi
 
-go 1.18
+go 1.23
 
 require (
 	github.com/StackExchange/wmi v1.2.1 // indirect

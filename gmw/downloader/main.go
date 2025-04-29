@@ -36,7 +36,7 @@ func downloadFile(filepath string, url string) (err error) {
 }
 
 func main() {
-	fmt.Printf("Demo Spyware (%s)\n", Unique)
+	fmt.Printf("Demo Downloader (%s)\n", Unique)
 	if err := downloadFile("eicar.com", "https://secure.eicar.org/eicar.com"); err != nil {
 		panic(err)
 	}

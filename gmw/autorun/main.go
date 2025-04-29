@@ -8,18 +8,19 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
+var Unique = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+
 func main() {
 
 	//var access uint32 = registry.ALL_ACCESS
 	autoRunPath := `SOFTWARE\Microsoft\Windows\CurrentVersion\Run`
 
-/*	key, _, err := registry.CreateKey(registry.LOCAL_MACHINE, autoRunPath, access)
-	if err != nil {
-		panic(err)
-	}
-*/
+	/*	key, _, err := registry.CreateKey(registry.LOCAL_MACHINE, autoRunPath, access)
+		if err != nil {
+			panic(err)
+		}
+	*/
 
-	
 	filePath, err := os.Executable()
 	if err != nil {
 		log.Fatal(err)

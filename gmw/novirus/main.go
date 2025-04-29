@@ -9,6 +9,10 @@
 
 package main
 
+import "fmt"
+
+var Unique = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+
 func main() {
-	println("This is innocent application")
+	fmt.Printf("Demo Innocent Application (%s)\n", Unique)
 }

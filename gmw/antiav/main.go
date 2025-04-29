@@ -23,6 +23,8 @@ import (
 	"strings"
 )
 
+var Unique = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+
 //go:embed AvList.txt.gz
 var avListGZ []byte
 

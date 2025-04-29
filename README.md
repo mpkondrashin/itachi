@@ -6,6 +6,24 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+# WItachi
+
+**WItachi** is a web-based version of Itachi that allows you to generate samples from the browser.
+
+## Installation
+
+Not required. Just download WItachi for your OS from [releases](https://github.com/mpkondrashin/itachi/releases)   
+
+## Usage
+
+Run WItachi (for example on Windows):
+
+```
+witachi_windows_amd64.exe
+``` 
+
+Navigate to `https://localhost:8443` or `http://localhost:8080` in your browser.
+
 ## Samples
 
 ### &#x261E; Dropper

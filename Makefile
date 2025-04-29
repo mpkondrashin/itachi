@@ -1,48 +1,44 @@
 #
-# Itachi (c) 2022 by Michael Kondrashin (mkondrashin@gmail.com)
+# Itachi (c) 2022-2025 by Michael Kondrashin (mkondrashin@gmail.com)
 # Copyright under MIT Lincese. Please see LICENSE file for details
-#
 #
 # Makefile
 #
 
-EXE=gmw/dropper.exe gmw/encryptor.exe gmw/spyware.exe gmw/downloader.exe gmw/antiav.exe gmw/autorun.exe gmw/novirus.exe #gmw/antivm.exe 
+GOOS ?= windows
+GOARCH ?= amd64
+LDFLAGS := -ldflags "-s -w"
+GMW_DIR := pkg/generate/gmw
+SAMPLES := dropper encryptor spyware downloader antiav autorun novirus
 
-itachi_linux_amd64: main.go $(EXE)
-	GOOS=linux GOARCH=amd64 go build -o itachi_linux_amd64
-	GOOS=darwin GOARCH=amd64 go build -o itachi_darwin_amd64
-	GOOS=darwin GOARCH=arm64 go build -o itachi_darwin_arm64
-	GOOS=windows GOARCH=amd64 go build -o itachi_windows_amd64.exe
+EXE := $(patsubst %,$(GMW_DIR)/%.exe,$(SAMPLES))
 
-gmw/dropper.exe: gmw/dropper/main.go
-	GOOS=windows GOARCH=amd64 go build  -ldflags "-s -w" -o ./gmw/dropper.exe ./gmw/dropper/*.go
+PLATFORMS := linux-amd64 darwin-amd64 darwin-arm64 windows-amd64
+TARGETS := $(foreach platform,$(PLATFORMS),itachi_$(platform)) $(foreach platform,$(PLATFORMS),witachi_$(platform))
 
-gmw/encryptor.exe: gmw/encryptor/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/encryptor.exe  ./gmw/encryptor/*.go
+all: $(TARGETS)
 
-gmw/spyware.exe: gmw/spyware/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/spyware.exe ./gmw/spyware/*.go
+# Pattern rule for itachi binaries
+itachi_%: main.go $(EXE)
+	$(eval OS := $(word 1,$(subst -, ,$*)))
+	$(eval ARCH := $(word 2,$(subst -, ,$*)))
+	GOOS=$(OS) GOARCH=$(ARCH) go build -o $@$(if $(filter windows,$(OS)),.exe,)
 
-gmw/downloader.exe: gmw/downloader/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/downloader.exe ./gmw/downloader/*.go
+# Pattern rule for witachi binaries
+witachi_%: main.go $(EXE)
+	$(eval OS := $(word 1,$(subst -, ,$*)))
+	$(eval ARCH := $(word 2,$(subst -, ,$*)))
+	GOOS=$(OS) GOARCH=$(ARCH) go build -o $@$(if $(filter windows,$(OS)),.exe,) ./cmd/witachi
 
-gmw/autorun.exe: gmw/autorun/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/autorun.exe ./gmw/autorun/*.go
+# Pattern rule for building Windows executables
+$(GMW_DIR)/%.exe: gmw/%/main.go
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build $(LDFLAGS) -o $@ ./gmw/$*/*.go
 
 gmw/antiav/AvList.txt.gz: gmw/antiav/AvList.txt
-	gzip -c gmw/antiav/AvList.txt > gmw/antiav/AvList.txt.gz
+	gzip -c $< > $@
 
-gmw/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
-	#curl https://raw.githubusercontent.com/AV1080p/AvList/master/AvList.txt --output gmw/antiav/AvList.txt
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antiav.exe ./gmw/antiav/*.go
-
-#gmw/antivm.exe: gmw/antivm/main.go
-#	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/antivm.exe ./gmw/antivm/*.go
-
-gmw/novirus.exe: gmw/novirus/main.go
-	GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./gmw/novirus.exe ./gmw/novirus/*.go
+$(GMW_DIR)/antiav.exe: gmw/antiav/main.go gmw/antiav/AvList.txt.gz
 
 .PHONY: clean
-
 clean:
-	rm itachi_linux_amd64 itachi_darwin_amd64 itachi_darwin_arm64 itachi_windows_amd64.exe $(EXE)
+	rm -f $(TARGETS) $(EXE) gmw/antiav/AvList.txt.gz

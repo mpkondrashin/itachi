@@ -18,6 +18,8 @@ jobs:
         run: go version
       - name: Build
         run: make
+      - name: Build
+        run: make witachi_linux_amd64
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -29,6 +31,10 @@ jobs:
             itachi_darwin_arm64
             itachi_linux_amd64
             itachi_windows_amd64.exe
+            witachi_darwin_amd64
+            witachi_darwin_arm64
+            witachi_linux_amd64
+            witachi_windows_amd64.exe
 
 #  push:
 #    branches: [ "main" ]
