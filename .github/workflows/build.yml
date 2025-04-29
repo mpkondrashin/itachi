@@ -9,7 +9,7 @@ name: Build
 on: [push]
 jobs:
   Build-Release:
-    runs-on: windows-2019 #ubuntu-latest
+    runs-on: ubuntu-latest # windows-2019 #ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Setup Go
