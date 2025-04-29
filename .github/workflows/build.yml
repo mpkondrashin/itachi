@@ -18,21 +18,25 @@ jobs:
         run: go version
       - name: Build
         run: make
+      - name: Create Release ZIP
+        run: |
+          zip itachi.zip \
+            README.md \
+            LICENSE \
+            itachi_darwin-amd64 \
+            itachi_darwin-arm64 \
+            itachi_linux-amd64 \
+            itachi_windows-amd64.exe \
+            witachi_darwin-amd64 \
+            witachi_darwin-arm64 \
+            witachi_linux-amd64 \
+            witachi_windows-amd64.exe
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            README.md
-            LICENSE
-            itachi_darwin-amd64
-            itachi_darwin-arm64
-            itachi_linux-amd64
-            itachi_windows-amd64.exe
-            witachi_darwin-amd64
-            witachi_darwin-arm64
-            witachi_linux-amd64
-            witachi_windows-amd64.exe
+            itachi.zip
 
 #  push:
 #    branches: [ "main" ]
