@@ -25,14 +25,14 @@ jobs:
           files: |
             README.md
             LICENSE
-            itachi_darwin_amd64
-            itachi_darwin_arm64
-            itachi_linux_amd64
-            itachi_windows_amd64.exe
-            witachi_darwin_amd64
-            witachi_darwin_arm64
-            witachi_linux_amd64
-            witachi_windows_amd64.exe
+            itachi_darwin-amd64
+            itachi_darwin-arm64
+            itachi_linux-amd64
+            itachi_windows-amd64.exe
+            witachi_darwin-amd64
+            witachi_darwin-arm64
+            witachi_linux-amd64
+            witachi_windows-amd64.exe
 
 #  push:
 #    branches: [ "main" ]
