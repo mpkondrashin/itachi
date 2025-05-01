@@ -24,6 +24,13 @@ witachi_windows_amd64.exe
 
 Navigate to `https://localhost:8443` or `http://localhost:8080` in your browser.
 
+To change default port numbers use:
+
+```
+witachi_windows_amd64.exe -http 8081 -https 8444
+```
+
+
 ## Samples
 
 ### &#x261E; Dropper
