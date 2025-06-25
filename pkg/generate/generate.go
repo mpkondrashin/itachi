@@ -83,7 +83,7 @@ func Extract(w io.Writer, name string) error {
 
 func ExtractEicar(w http.ResponseWriter) error {
 	//The following is reverce of eicar.com (X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*)
-	dataReverce := `*H+H$!ELIF-TSET-SURIVITNA-DRADNATS-RACIE$}7)CC7)^P(45XZP\\4[PA@%P!O5X`
+	dataReverce := `*H+H$!ELIF-TSET-SURIVITNA-DRADNATS-RACIE$}7)CC7)^P(45XZP\4[PA@%P!O5X`
 	w.Header().Set("Content-Disposition", "attachment; filename=eicar.com")
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.Header().Set("Content-Length", strconv.Itoa(len(dataReverce)))

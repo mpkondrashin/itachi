@@ -69,6 +69,7 @@ var homepageTemplate = `
 		Notes:
 		<ul>
 		<li>Samples (beside EICAR.COM) are designed to showcase sandbox detection. They are not supposed to be detected by static antimalware engines. Some of the samples may be detected by sophisticated ML engines.</li>
+		<li>All samples are 64 bit (beside EICAR.COM)</li>
 		<li>For each sample it can be downloaded though HTTPS (with encryption) and HTTP (without encryption).</li>
 		<li>HTTPS is using hardcoded self-signed certificate.</li>
 		<li>Each time you click on the link, a new unique file will be generated.</li>
